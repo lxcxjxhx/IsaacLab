@@ -42,9 +42,9 @@ from isaaclab.managers import ObservationTermCfg, SceneEntityCfg
 from isaaclab.sim import SimulationContext
 
 import isaaclab_tasks  # noqa: F401
-import isaaclab_tasks.contrib.microduck.pollen_mdp as mdp
+import isaaclab_tasks.contrib.microduck.mdp as mdp
 from isaaclab_tasks.contrib.microduck.assets import MICRODUCK_ALLCOLLISIONS_USD_PATH
-from isaaclab_tasks.contrib.microduck.pollen_mdp.symmetry import compute_symmetric_states
+from isaaclab_tasks.contrib.microduck.mdp.symmetry import compute_symmetric_states
 from isaaclab_tasks.contrib.microduck.roulade.agents.rsl_rl_ppo_cfg import MicroDuckRouladePPORunnerCfg
 from isaaclab_tasks.contrib.microduck.roulade.roulade_env_cfg import (
     MICRODUCK_LANDING_GATE,
@@ -730,8 +730,8 @@ def test_the_critic_group_guards_its_sensor_reads():
     assert list(terms) == [name for name, _ in CRITIC_OBSERVATION_TERMS]
     assert not observations.critic.enable_corruption
     assert "foot_height" not in terms
-    assert terms["foot_air_time"].func is mdp.foot_air_time_safe
-    assert terms["foot_contact_forces"].func is mdp.foot_contact_forces_safe
+    assert terms["foot_air_time"].func is mdp.foot_group_air_time_safe
+    assert terms["foot_contact_forces"].func is mdp.foot_group_contact_forces_safe
     # a privileged group the runner never reads is dead weight
     assert MicroDuckRouladePPORunnerCfg().obs_groups == {"actor": ["policy"], "critic": ["critic"]}
 
