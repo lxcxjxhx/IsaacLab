@@ -63,3 +63,11 @@ To retain the previous recipe in a custom task config, use ``mdp.track_linear_ve
 2.0 and ``std=math.sqrt(0.1)``, and ``mdp.track_angular_velocity`` with weight 2.0 and
 ``std=math.sqrt(0.5)``. Set ``rewards.pose.params["standing_only"] = False`` and restore the action-rate
 weight stages to ``(500, -0.2)``, ``(750, -0.4)``, ``(1000, -0.6)``, ``(1250, -0.8)``, and ``(1500, -1.0)``.
+
+Additional contributed skills
+------------------------------
+
+See :ref:`microduck-pollen-tasks` for the imported Pollen skill recipes, including stand-up,
+seated recovery, skating, ball kicking and two-teacher VelStand. The imported flat and rough
+walking IDs carry ``-Pollen``; the walking recipes described above keep their existing IDs and
+settings.
